@@ -1,0 +1,62 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: $shadow-4;
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        position: relative;
+        //definir o formato de circulo 1ºnumero é o raio 50% em tudo faz ser o centro vertical e horizontal
+        // pra fazer o circulo ele precisa ser um elemento float, precisa tbm ter dimensoes definidas(width e height)
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        //pra fazer um circulo mesmo usamos o clip-path;
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg);
+    }
+
+    &__image {
+        height: 100%;
+        transition: all .5s;
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+    
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        font-size: 1.7rem;
+        text-transform: uppercase;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        //tira a tremida do final do efeito
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__image {
+        transform:translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
